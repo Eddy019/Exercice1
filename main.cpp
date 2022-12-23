@@ -1,7 +1,9 @@
 #include <iostream>
+#include<fstream>
 #include <string>
 #include <cstdio>
 #include <vector>
+#include <iterator>
 
 using namespace std;
 
@@ -12,8 +14,10 @@ int main() {
 
     int choix=0 ;
     char16_t c ;
+    string a[107] ;
     cout <<"Which file do you want to analyse ? "<< endl <<"For Call (1) " << endl  << "For Phonebook (2)" <<endl ;
     cin >> choix;
+
 
 
 
@@ -39,18 +43,28 @@ int main() {
                         vector <string> tab;
 
 
-                        for (int i = 0; i < 206; i++) {
+                        for (int i = 0; i < 107; i++) {
                             fseek(fichier1, i, SEEK_SET);
                             char t1[207];
                             t1[i] = getc(fichier1);
 
                             c = t1[i];
-                            cout << " " << hex << (int) c;
+                            cout << hex << (int) c;
 
+
+                            for (int j=0 ; j<107 ; j++)
+
+                            {
+                                a[j]=c;
+
+                            }
 
 
 
                         }
+
+                        cout << hex << (string) a ;
+
 
                     }
 
@@ -79,13 +93,11 @@ int main() {
 
     }
 
-
-
-
     fclose( fichier1);
 
 
-
-
-
 }
+
+
+
+
